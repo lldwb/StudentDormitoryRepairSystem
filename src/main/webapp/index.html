@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Title</title>
+	<meta charset="utf-8"></meta>
+	<script src="js/axios.min.js"></script>
+	<script src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div>学生宿舍报修系</div>
+		<table border="1">
+			<tr>
+				<td width="120px">报修编号</td>
+				<td width="50px">报修人</td>
+				<td width="50px">宿舍</td>
+				<td width="50px">内容</td>
+				<td width="50px">状态</td>
+				<td width="50px">操作</td>
+			</tr>
+			<tr v-for="film in filmList">
+				<td>{{film.filmname}}</td>
+				<td>{{film.areas}}</td>
+				<td>{{film.actors}}</td>
+				<td>{{film.price}}</td>
+				<td>{{film.memo}}</td>
+				<td>
+					<button @click="mydel(film.filmid)">删除</button>
+				</td>
+			</tr>
+			<tr v-if="filmList.length==0">
+				<td colspan="6">loading...</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+<script>
+
+new Vue({
+	el:'#app',
+	data:{
+		filmList:[]
+	},
+	mounted(){
+		axios.get('ttttt3').then((response)=>{
+			this.filmList = response.data;
+		})
+	},
+	methods:{
+		async mydel(id){
+			console.log('点了删除按钮'+id);
+			let response = await axios.get(
+				'delfilm',
+				{
+					params:{
+						filmid:id
+					}
+				}
+			)
+			console.log( response.data );
+			console.log( response.data.code );
+			
+			
+			if(response.data.code==1){
+				let responseNewData = await axios.get('ttttt3')
+				this.filmList = responseNewData.data;				
+			}else{
+				alert('删除失败');
+			}
+		}
+	}
+	
+})
+</script>
