@@ -1,7 +1,7 @@
 package com.action;
 
-import com.service.FilmService;
-import com.service.FilmServiceImpl;
+import com.service.MaintainRecordService;
+import com.service.MaintainRecordServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,16 +12,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/delfilm")
-public class FilmInfoAction_delete  extends HttpServlet{
+public class MaintainRecord_delete extends HttpServlet{
 
-    private FilmService service = new FilmServiceImpl();
+    private MaintainRecordService service = new MaintainRecordServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filmid_str = request.getParameter("filmid");
-        int filmid = Integer.parseInt(filmid_str);
+        String mid_str = request.getParameter("mid");
+        int mid = Integer.parseInt(mid_str);
 
-        boolean flag = service.delFilmById(filmid);
+        boolean flag = service.delMaintainRecordById(mid);
         PrintWriter out = response.getWriter();
 
         if(flag){
