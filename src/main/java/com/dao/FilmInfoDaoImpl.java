@@ -11,9 +11,9 @@ import java.util.List;
 //写数据库的读取代码
 public class FilmInfoDaoImpl implements FilmInfoDao{
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/filmdb?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8";
+    private static final String URL = "jdbc:mysql://mysql.lldwb.top:33366/filmdb?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8";
     private static final String USER_NAME = "root";
-    private static final String PASSWORD = "123456";
+    private static final String PASSWORD = "@dwb123456";
 
     @Override
     public List<FilmInfo> getAllFilmInfo() {
