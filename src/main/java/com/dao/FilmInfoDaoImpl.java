@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.entity.FilmInfo;
+import com.entity.MaintainRecord;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,27 +16,19 @@ public class FilmInfoDaoImpl implements FilmInfoDao{
     private static final String PASSWORD = "@dwb123456";
 
     @Override
-    public List<FilmInfo> getAllFilmInfo() {
+    public List<MaintainRecord> getAllFilmInfo() {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("找到数据库驱动:com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(URL,USER_NAME,PASSWORD);;
             PreparedStatement pst = conn.prepareStatement("select * from filminfo");
             ResultSet rs = pst.executeQuery();
-            List filmList = new ArrayList<FilmInfo>();
+            List maintainRecordArrayList = new ArrayList<MaintainRecord>();
             while(rs.next()){
-                FilmInfo film = new FilmInfo();
-
-                film.setActors( rs.getString("actors") );
-                film.setAreas( rs.getString("areas") );
-                film.setFilmname( rs.getString("filmname") );
-                film.setFilmid( rs.getInt("filmid") );
-                film.setPrice( rs.getFloat("price") );
-                film.setMemo(rs.getString("memo"));
-
-                filmList.add(film);
+                MaintainRecord maintainRecord = new MaintainRecord(rs.getInt("mid"),rs.getString("mname"),rs.getString("room"),rs.getBoolean("context"),rs.getString("status"));
+                maintainRecordArrayList.add(maintainRecord);
             }
-            return filmList;
+            return maintainRecordArrayList;
 
         }catch (Exception e){
             System.out.println("发生异常:"+e.getMessage());

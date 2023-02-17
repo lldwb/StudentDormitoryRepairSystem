@@ -2,9 +2,8 @@ package com.service;
 
 import com.dao.FilmInfoDao;
 import com.dao.FilmInfoDaoImpl;
-import com.entity.FilmInfo;
+import com.entity.MaintainRecord;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FilmServiceImpl implements FilmService{
@@ -12,7 +11,7 @@ public class FilmServiceImpl implements FilmService{
     private FilmInfoDao dao = new FilmInfoDaoImpl();
 
     @Override
-    public List<FilmInfo> getAllFilmInfo() {
+    public List<MaintainRecord> getAllFilmInfo() {
         List filmList = dao.getAllFilmInfo();
         return filmList;
     }

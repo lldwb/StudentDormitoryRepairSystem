@@ -1,6 +1,14 @@
 package com.entity;
 
-public class FilmInfo {
+public class MaintainRecord {
+    public MaintainRecord(int mid, String mname, String room, boolean context, String status) {
+        this.mid = mid;
+        this.mname = mname;
+        this.room = room;
+        this.context = context;
+        this.status = status;
+    }
+
     private int mid;
 
     public int getMid() {
@@ -48,6 +56,6 @@ public class FilmInfo {
     private boolean context;
     private String status;
 
-    public FilmInfo() {
+    public MaintainRecord() {
     }
 }

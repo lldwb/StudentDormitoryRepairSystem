@@ -1,12 +1,12 @@
 package com.service;
 
-import com.entity.FilmInfo;
+import com.entity.MaintainRecord;
 
 import java.util.List;
 
 public interface FilmService {
 
-    List<FilmInfo> getAllFilmInfo();
+    List<MaintainRecord> getAllFilmInfo();
 
     boolean delFilmById(int id);
 }

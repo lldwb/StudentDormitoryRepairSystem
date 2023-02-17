@@ -1,6 +1,6 @@
 package com.action;
 
-import com.entity.FilmInfo;
+import com.entity.MaintainRecord;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.FilmService;
 import com.service.FilmServiceImpl;
@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/ttttt3")
@@ -29,7 +28,7 @@ public class FilmInfoAction_show extends HttpServlet {
 
         //2.呼叫service来处理更加复杂的业务逻辑
         FilmService service = new FilmServiceImpl();
-        List<FilmInfo> filmList = service.getAllFilmInfo();
+        List<MaintainRecord> filmList = service.getAllFilmInfo();
 
 
         ObjectMapper mapper = new ObjectMapper();
