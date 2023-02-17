@@ -9,4 +9,6 @@ public interface MaintainRecordService {
     List<MaintainRecord> getAllMaintainRecordInfo();
 
     boolean delMaintainRecordById(int id);
+
+    boolean updMaintainRecordById(int id);
 }

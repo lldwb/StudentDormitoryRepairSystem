@@ -20,4 +20,9 @@ public class MaintainRecordServiceImpl implements MaintainRecordService {
     public boolean delMaintainRecordById(int id) {
         return dao.delMaintainRecordById(id);
     }
+
+    @Override
+    public boolean updMaintainRecordById(int id) {
+        return dao.updMaintainRecordById(id);
+    }
 }

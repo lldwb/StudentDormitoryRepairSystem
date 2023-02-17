@@ -10,4 +10,7 @@ public interface MaintainRecordDao {
 
     boolean delMaintainRecordById(int id);
 
+    boolean updMaintainRecordById(int id);
+
+
 }

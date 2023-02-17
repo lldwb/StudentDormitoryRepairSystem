@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/delete")
-public class MaintainRecord_delete extends HttpServlet{
+@WebServlet("/update")
+public class MaintainRecord_update extends HttpServlet{
 
     private MaintainRecordService service = new MaintainRecordServiceImpl();
 
@@ -21,7 +21,7 @@ public class MaintainRecord_delete extends HttpServlet{
         String mid_str = request.getParameter("mid");
         int mid = Integer.parseInt(mid_str);
 
-        boolean flag = service.delMaintainRecordById(mid);
+        boolean flag = service.updMaintainRecordById(mid);
         PrintWriter out = response.getWriter();
 
         if(flag){

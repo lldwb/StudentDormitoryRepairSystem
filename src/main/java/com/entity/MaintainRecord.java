@@ -1,12 +1,12 @@
 package com.entity;
 
 public class MaintainRecord {
-    public MaintainRecord(int mid, String mname, String room, boolean context, String status) {
+    public MaintainRecord(int mid, String mname, String room, boolean status, String context) {
         this.mid = mid;
         this.mname = mname;
         this.room = room;
-        this.context = context;
         this.status = status;
+        this.context = context;
     }
 
     private int mid;
@@ -35,26 +35,26 @@ public class MaintainRecord {
         this.room = room;
     }
 
-    public boolean isContext() {
-        return context;
-    }
-
-    public void setContext(boolean context) {
-        this.context = context;
-    }
-
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
     }
 
     private String mname;
     private String room;
-    private boolean context;
-    private String status;
+    private boolean status;
+    private String context;
 
     public MaintainRecord() {
     }

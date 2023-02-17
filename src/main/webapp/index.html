@@ -16,15 +16,17 @@
 					<td width="50px">宿舍</td>
 					<td width="50px">内容</td>
 					<td width="50px">状态</td>
-					<td width="50px">操作</td>
+					<td>操作</td>
 				</tr>
 				<tr v-for="maintainRecord in maintainRecordList">
 					<td>{{maintainRecord.mid}}</td>
 					<td>{{maintainRecord.mname}}</td>
 					<td>{{maintainRecord.room}}</td>
-					<td>{{maintainRecord.context}==true?"1":"1"}</td>
-					<td>{{maintainRecord.status}}</td>
+					<td>{{maintainRecord.context}}</td>
+					<!-- 1 true:代修理 : 0 false:已完成 -->
+					<td>{{maintainRecord.status?"代修理":"已完成"}}</td>
 					<td>
+						<button v-if="maintainRecord.status" @click="myupd(maintainRecord.mid)">已修理</button>
 						<button @click="mydel(maintainRecord.mid)">删除</button>
 					</td>
 				</tr>
@@ -52,7 +54,7 @@
 			async mydel(id) {
 				console.log('点了删除按钮' + id);
 				let response = await axios.get(
-					'delfilm', {
+					'delete', {
 						params: {
 							mid: id
 						}
@@ -66,6 +68,27 @@
 					this.filmList = responseNewData.data;
 				} else {
 					alert('删除失败');
+				}
+			},
+			
+			//更新事件
+			async myupd(id) {
+				console.log('点了更新按钮' + id);
+				let response = await axios.get(
+					'update', {
+						params: {
+							mid: id
+						}
+					}
+				)
+				console.log(response.data);
+				console.log(response.data.code);
+
+				if (response.data.code == 1) {
+					let responseNewData = await axios.get('show')
+					this.filmList = responseNewData.data;
+				} else {
+					alert('更新失败');
 				}
 			}
 		}

@@ -41,9 +41,28 @@ public class MaintainRecordDaoImpl implements MaintainRecordDao {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("找到数据库驱动:com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(URL,USER_NAME,PASSWORD);;
-            PreparedStatement pst = conn.prepareStatement("delete from MaintainRecord where filmid=?");
+            Connection conn = DriverManager.getConnection(URL,USER_NAME,PASSWORD);
+            PreparedStatement pst = conn.prepareStatement("delete from MaintainRecord where mid=?");
             pst.setInt(1,id);
+            pst.executeUpdate();
+            return true;
+
+        }catch (Exception e){
+            System.out.println("发生异常:"+e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updMaintainRecordById(int id) {
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("找到数据库驱动:com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(URL,USER_NAME,PASSWORD);
+            PreparedStatement pst = conn.prepareStatement("update updateUnit sel remark=? where mid=?");
+//            true:代修理 : false:已完成
+            pst.setBoolean(1,false);
+            pst.setInt(2,id);
             pst.executeUpdate();
             return true;
 
